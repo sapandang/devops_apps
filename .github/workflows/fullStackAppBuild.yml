@@ -48,8 +48,8 @@ jobs:
     # Upload tarball to GitHub release
     - name: Upload release asset
       uses: softprops/action-gh-release@v2
-      if: startsWith(github.ref, 'refs/tags/')
       with:
+        generate_release_notes: true
         files: fullstackapp_*.tar
       env:
-        GITHUB_TOKEN: ${{ secrets.BUILD_TOKEN }}
+        GITHUB_TOKEN: ${{ secrets.GH_PAT }} # ✅ use your fine-grained token
